@@ -1,0 +1,33 @@
+name: CI Pipeline     # El nombre del workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Dar permisos a gradlew
+        working-directory: ./TestingUnitario
+        run: chmod +x gradlew
+
+      - name: Compilar el proyecto
+        working-directory: ./TestingUnitario
+        run: ./gradlew build
+
+      - name: Ejecutar los tests
+        working-directory: ./TestingUnitario
+        run: ./gradlew test
