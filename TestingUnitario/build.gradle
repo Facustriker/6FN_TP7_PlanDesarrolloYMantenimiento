@@ -10,24 +10,50 @@ repositories {
 }
 
 dependencies {
-
-    //dependencia para usar jUnit
+    // --- JUnit 5 ---
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
-    // Lombok: compileOnly + annotationProcessor
+    // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.38'
     annotationProcessor 'org.projectlombok:lombok:1.18.38'
-
-
-    // Si en tests también usás Lombok para tus clases de prueba
     testCompileOnly 'org.projectlombok:lombok:1.18.38'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
 
     // JPA (Spring Data)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.5.3'
+
+    // Para tests de integración (si necesitás Spring Boot Test en el futuro)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.5.3'
 }
 
 test {
     useJUnitPlatform()
 }
+
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+            runtimeClasspath += output + compileClasspath
+            srcDir file('src/integrationTest/java')
+        }
+        resources.srcDir file('src/integrationTest/resources')
+    }
+}
+
+configurations {
+    integrationTestImplementation.extendsFrom testImplementation
+    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
+task integrationTest(type: Test) {
+    description = "Ejecuta los tests de integración"
+    group = "verification"
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    shouldRunAfter test
+    useJUnitPlatform()
+}
+
+check.dependsOn integrationTest
