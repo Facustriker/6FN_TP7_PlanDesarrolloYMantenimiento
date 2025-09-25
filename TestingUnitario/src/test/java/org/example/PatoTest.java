@@ -185,15 +185,16 @@ public class PatoTest {
     assertEquals("El pato Lucas está haciendo Quack", resultado);
   }
 
-  // PRUEBA ARREGLADA CORREGIDA
+
   @Test
   void pesoMinimoNoDebeSerMayorQuePesoMaximo() {
     Pato pato =
         Pato.builder()
             .nombrePato("Pato Peso")
             .nombreCientificoPato("Anas")
-            .pesoMinPato(3.0f) // CORREGIDO PESO
-            .pesoMaxPato(5.0f)
+
+            .pesoMinPato(4.0f) // CORREGIDO
+            .pesoMaxPato(9.0f)
             .plumajePato("Gris")
             .build();
 
