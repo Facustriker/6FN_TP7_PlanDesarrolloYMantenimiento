@@ -12,7 +12,6 @@ import lombok.*;
 @Builder
 public class TipoAlimento {
 
-    @Column(unique = true)
-    private String nombre;
-
+  @Column(unique = true)
+  private String nombre;
 }
