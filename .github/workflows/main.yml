@@ -25,7 +25,7 @@ jobs:
       # Compilación y build
       - name: Compilar el proyecto
         working-directory: ./TestingUnitario
-        run: ./gradlew build --no-daemon
+        run: ./gradlew assemble --no-daemon
 
       # Tests unitarios y de integración
       - name: Ejecutar tests
