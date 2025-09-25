@@ -196,7 +196,7 @@ public class PatoTest {
         Pato pato = Pato.builder()
                 .nombrePato("Pato Peso")
                 .nombreCientificoPato("Anas")
-                .pesoMinPato(4.0f) //CORREGIDO
+                .pesoMinPato(4.0f) ///CORREGIDO
                 .pesoMaxPato(5.0f)
                 .plumajePato("Gris")
                 .build();
