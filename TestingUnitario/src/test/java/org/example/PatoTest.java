@@ -251,4 +251,6 @@ public class PatoTest {
                 "Un nuevo pato debería tener comportamiento null por defecto");
     }
 
+    //COMENTARIO
+
 }
