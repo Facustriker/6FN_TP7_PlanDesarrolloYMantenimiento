@@ -6,7 +6,7 @@ plugins {
 
 checkstyle {
     toolVersion = '10.12.1'
-    config = rootProject.resources.text.fromFile('config/checkstyle/checkstyle.xml')
+    configFile = rootProject.file("config/checkstyle/checkstyle.xml")
 }
 
 spotless {
