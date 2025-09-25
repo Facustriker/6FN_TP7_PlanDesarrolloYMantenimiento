@@ -137,8 +137,6 @@ public class PatoTest {
         }
     }
 
-    //Cambio para probar
-
     @Test
     public void atributosDeComportamientoConCamelCase(){
         Class<?> comportamientoClass = Comportamiento.class;
