@@ -196,7 +196,7 @@ public class PatoTest {
         Pato pato = Pato.builder()
                 .nombrePato("Pato Peso")
                 .nombreCientificoPato("Anas")
-                .pesoMinPato(4.0f)
+                .pesoMinPato(9.0f) //CORREGIR ESTE ERROR
                 .pesoMaxPato(5.0f)
                 .plumajePato("Gris")
                 .build();
@@ -250,7 +250,5 @@ public class PatoTest {
         assertNull(pato.getComportamientoSonido(),
                 "Un nuevo pato debería tener comportamiento null por defecto");
     }
-
-    //COMENTARIO
 
 }
