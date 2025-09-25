@@ -185,7 +185,6 @@ public class PatoTest {
     assertEquals("El pato Lucas está haciendo Quack", resultado);
   }
 
-  
   @Test
   void pesoMinimoNoDebeSerMayorQuePesoMaximo() {
     Pato pato =
